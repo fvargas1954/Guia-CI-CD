@@ -1,10 +1,14 @@
+import os
 import mlflow
 import sys
 
 print("🔍 Iniciando validación del modelo...")
 
-# Configurar MLflow con URI relativo simple
-mlflow.set_tracking_uri("./mlruns")
+# Forzar tracking URI con ruta absoluta del directorio actual
+tracking_dir = os.path.join(os.getcwd(), "mlruns")
+mlflow.set_tracking_uri(f"file://{tracking_dir}")
+
+print(f"📁 MLflow tracking URI: {tracking_dir}")
 
 # Obtener el experimento
 experiment = mlflow.get_experiment_by_name("ci-cd-mlflow-local")

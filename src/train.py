@@ -1,3 +1,4 @@
+import os
 import mlflow
 import mlflow.sklearn
 from sklearn.datasets import load_diabetes
@@ -7,9 +8,13 @@ from sklearn.model_selection import train_test_split
 
 print("🚀 Iniciando entrenamiento del modelo...")
 
-# Configurar MLflow con URI relativo simple
-mlflow.set_tracking_uri("./mlruns")
+# Forzar tracking URI con ruta absoluta del directorio actual
+tracking_dir = os.path.join(os.getcwd(), "mlruns")
+os.makedirs(tracking_dir, exist_ok=True)
+mlflow.set_tracking_uri(f"file://{tracking_dir}")
 mlflow.set_experiment("ci-cd-mlflow-local")
+
+print(f"📁 MLflow tracking URI: {tracking_dir}")
 
 # Cargar datos
 print("📊 Cargando dataset de diabetes...")
