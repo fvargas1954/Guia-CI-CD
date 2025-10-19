@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/Fabian/Downloads/NewPC/EAN/MAESTRIA/MLOPs/Taller_CI_CD_2/Guia-CI-CD/mlruns/901790685484674691
+creation_time: 1760803942618
+experiment_id: '901790685484674691'
+last_update_time: 1760803942618
+lifecycle_stage: active
+name: ci-cd-mlflow-local
