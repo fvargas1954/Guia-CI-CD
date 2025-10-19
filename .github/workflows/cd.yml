@@ -20,13 +20,18 @@ jobs:
         run: |
           pip install -r requirements.txt
       
-      - name: Descargar artefactos del run anterior
-        uses: actions/download-artifact@v4
-        with:
-          name: mlruns
-          path: mlruns/
+      - name: Entrenar modelo (para despliegue)
+        run: |
+          mkdir -p mlruns
+          python src/train.py
+      
+      - name: Validar modelo antes de despliegue
+        run: |
+          python src/validate.py
       
       - name: Promocionar modelo
         run: |
-          echo "✅ Promoción del modelo validado a producción"
-          echo "Modelo listo para deployment"
+          echo "✅ Modelo validado y listo para producción"
+          echo "📦 Artefactos disponibles en mlruns/"
+          echo "🚀 En un escenario real, aquí se desplegaría con:"
+          echo "   mlflow models serve -m mlruns/.../model -p 5000"
