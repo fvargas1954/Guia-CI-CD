@@ -1,12 +1,10 @@
 import mlflow
 import sys
-import os
 
 print("🔍 Iniciando validación del modelo...")
 
-# Configurar MLflow - CORREGIDO
-mlflow_uri = os.path.abspath("mlruns")
-mlflow.set_tracking_uri(f"file:{mlflow_uri}")
+# Configurar MLflow con URI relativo simple
+mlflow.set_tracking_uri("./mlruns")
 
 # Obtener el experimento
 experiment = mlflow.get_experiment_by_name("ci-cd-mlflow-local")

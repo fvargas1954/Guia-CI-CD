@@ -1,4 +1,3 @@
-import os
 import mlflow
 import mlflow.sklearn
 from sklearn.datasets import load_diabetes
@@ -8,9 +7,8 @@ from sklearn.model_selection import train_test_split
 
 print("🚀 Iniciando entrenamiento del modelo...")
 
-# Configurar MLflow (tracking local)
-mlflow_uri = os.path.abspath("mlruns")
-mlflow.set_tracking_uri(f"file:{mlflow_uri}")
+# Configurar MLflow con URI relativo simple
+mlflow.set_tracking_uri("./mlruns")
 mlflow.set_experiment("ci-cd-mlflow-local")
 
 # Cargar datos
